@@ -1,4 +1,7 @@
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ListPractice {
 
@@ -67,25 +70,25 @@ public class ListPractice {
         }
 
 
-//        /** 本当にそうなの? ナノ秒で計測してみる*/
-//        System.out.println("要素の追加時間を計測します。");
-//        //要素の追加
-//        Random rand = new Random();
-//        long arrayAddtime, linkedAddtime = 0;
-//        arrayAddtime = addTest(rand, arrayList);
-//        System.out.println("ArrayListの処理時間：" + arrayAddtime + " ナノ秒");
-//        linkedAddtime = addTest(rand, lnkdList);
-//        System.out.println("LinkedListの処理時間：" + linkedAddtime + " ナノ秒");
-//        judge(arrayAddtime, linkedAddtime); //速さの判定を行う
-//
-//
-//        System.out.println("\n要素のアクセス時間を計測します。");
-//        long arrayGetTime, linkedGetTime = 0;
-//        arrayGetTime = getTest(rand, arrayList);
-//        System.out.println("ArrayListの処理時間：" + arrayGetTime + " ナノ秒");
-//        linkedGetTime = getTest(rand, lnkdList);
-//        System.out.println("LinkedListの処理時間：" + linkedGetTime + " ナノ秒");
-//        judge(arrayGetTime, linkedGetTime); //速さの判定を行う
+        /** 本当にそうなの? ナノ秒で計測してみる*/
+        System.out.println("要素の追加時間を計測します。");
+        //要素の追加
+        Random rand = new Random();
+        long arrayAddtime, linkedAddtime = 0;
+        arrayAddtime = addTest(rand, arrayList);
+        System.out.println("ArrayListの処理時間：" + arrayAddtime + " ナノ秒");
+        linkedAddtime = addTest(rand, lnkdList);
+        System.out.println("LinkedListの処理時間：" + linkedAddtime + " ナノ秒");
+        judge(arrayAddtime, linkedAddtime); //速さの判定を行う
+
+
+        System.out.println("\n要素のアクセス時間を計測します。");
+        long arrayGetTime, linkedGetTime = 0;
+        arrayGetTime = getTest(rand, arrayList);
+        System.out.println("ArrayListの処理時間：" + arrayGetTime + " ナノ秒");
+        linkedGetTime = getTest(rand, lnkdList);
+        System.out.println("LinkedListの処理時間：" + linkedGetTime + " ナノ秒");
+        judge(arrayGetTime, linkedGetTime); //速さの判定を行う
 
 
         //AbstractList
@@ -120,36 +123,14 @@ public class ListPractice {
         /**
          * 同じ要素が2、3つあった場合はどうなるのか？
          */
-        List<String> list2 = new ArrayList<String>(Arrays.asList("Orange","Apple", "Orange", "Melon","Orange"));
+        List<String> list2 = new ArrayList<String>(Arrays.asList("Orange", "Apple", "Orange", "Melon", "Orange"));
         for (
                 int i = 0; i < list2.size(); i++) {
             //System.out.println(list2.get(i));
         }
         list2.remove("Orange");//先頭のOrangeが削除されている
         //System.out.println(list2);
-
-        /**
-         * 重複してる要素を消して1つにしたい。
-         */
-        List<String> list3 = new ArrayList<String>(Arrays.asList("Orange","Apple", "Orange", "Melon","Orange"));
-        int k= list3.size();
-        for(int t=0; t < k; t++){
-            if(list3.contains("Orange")){
-                System.out.println(list3.size());
-                list3.remove("Orange");
-            }else{
-                list3.add("Orange");
-                break;
-            }
-        }
-
-        for(String t : list3){
-            if(t == "Orange"){
-                list3.remove("Orange");
-            }
-        }
-        System.out.println(list3);
-
     }
+
 
 }
