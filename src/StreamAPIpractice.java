@@ -84,6 +84,7 @@ public class StreamAPIpractice {
                 .filter(o -> o.contains("O") || o.contains("o"))//Oまたはoを含むもののみ抽出
                 .sorted() //ABC順に並べ替え
                 .collect(Collectors.toList());//終端操作、リストに変換する
+
         System.out.println("StreamAPIで記述した場合のOまたがoを含むフルーツの名前");
         System.out.println(streamList );
 
