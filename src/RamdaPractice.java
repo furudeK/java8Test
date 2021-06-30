@@ -1,16 +1,24 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.Callable;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 
 public class RamdaPractice {
+    public interface Hello {
+        public void getHello(String str);
+    }
+
+
+    public interface HelloAndReply {
+        public void getHello(String name, String reply);
+    }
+
     static void print(Integer i) {
         System.out.println(i);
     }
-    void hoge(){
-        System.out.println("u");
-    }
+
     static void ramda() {
         /** メソッド参照を紐解く*/
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5); //1~5までの要素を持つリストを作成
@@ -38,34 +46,18 @@ public class RamdaPractice {
             print(i);
         }
 
-        /** ラムダ式はローカルクラスと無名クラスという仕組みで成り立っている */
+//        Hello hello = new Hello() {
+//            @Override
+//            public void getHello(String str) {
+//                System.out.println("hello" + str);
+//            }
+//        };
+        //引数ありのラムダ式
+        Hello hello = str -> System.out.println("Hello" + str);
+        hello.getHello("again!");
 
-        //Runnableインタフェースを実装したローカルクラス
-        class Local implements Runnable {
-            @Override
-            public void run() {
-                System.out.println("Hello Lambda!");
-            }
-        }
-
-        Runnable person = new Local();
-        person.run(); // Hello Lambda!
-
-        //無名クラス = インタフェースを実装したローカルクラスの宣言を省略（26行目）
-        Runnable mumeiPerson = new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("Hello Lambda!");
-            }
-        };
-        mumeiPerson.run(); //Hello Lambda!
-
-        //ラムダ式 無名クラスからさらにnew Runnable()とpublic void runを省略
-        Runnable ramdaPerson = () -> {
-            System.out.println("Hello Lambda!");
-        };
-        ramdaPerson.run(); //Hello Lambda
-
-        //抽象メソッドが1つでなければいけない
+        //複数の引数ありのラムダ式
+        HelloAndReply helloAndReply = ((name, reply) -> System.out.println(name + reply));
+        helloAndReply.getHello("Taro", " say Hello");
     }
 }
