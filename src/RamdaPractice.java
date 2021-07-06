@@ -2,17 +2,18 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 
 public class RamdaPractice {
     public interface Hello {
-        public void getHello(String str);
+        void getHello(String str);
     }
 
 
     public interface HelloAndReply {
-        public void getHello(String name, String reply);
+        void getHello(String name, String reply);
     }
 
     static void print(Integer i) {
@@ -59,5 +60,7 @@ public class RamdaPractice {
         //複数の引数ありのラムダ式
         HelloAndReply helloAndReply = ((name, reply) -> System.out.println(name + reply));
         helloAndReply.getHello("Taro", " say Hello");
+
+
     }
 }

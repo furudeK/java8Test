@@ -8,7 +8,7 @@ public class ListPractice {
     static long addTest(Random rand, List list) {
         long startTime = System.nanoTime();  // 処理前の時刻を取得
         for (int j = 0; j < 10000000; j++) {
-            int num = rand.nextInt(1000);
+            int num = rand.nextInt(1000); //この処理が時間を食っている？→この数だけ用意しおく
             list.set(num, num);
         }
         long endTime = System.nanoTime(); // 処理後の時刻を取得

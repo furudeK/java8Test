@@ -32,7 +32,7 @@ public class MapPractice {
         System.out.println(linkedHashMap.keySet());
         System.out.println(linkedHashMap.values());
 
-        /**基本的にHashMapで問題ないが、追加した要素に順序が必要なばああいはLinkedHashMap、キーがenumの場合はEnumMapを使用する */
+        /**基本的にHashMapで問題ないが、追加した要素に順序が必要な場合はLinkedHashMap、キーがenumの場合はEnumMapを使用する */
 
     }
 }

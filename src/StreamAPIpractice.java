@@ -7,24 +7,35 @@ public class StreamAPIpractice {
     public static void streamAPIpractice() {
         /** まずは肩慣らし
          * StreamAPIで単純に数字を表示してみる*/
-        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5); //1~5までの要素を持つリストを作成
+        List<Integer> list = Arrays.asList(1, 5, 2, 3, 4); //1~5までの要素を持つリストを作成
+
         //普通に書くと
+        System.out.println("For文で記述");
         for (Integer num : list) {
-            System.out.println(num);
+            System.out.print(num);
         }
+        System.out.println();
 
+        System.out.println("StreamAPIで記述");
         Stream<Integer> stream = list.stream(); //listをStream化して参照型Streamのstreamに入れる
-        stream.forEach(System.out::println); //forEachを使用し、streamの要素を1つずつ表示
-
+        stream.forEach(System.out::print); //forEachを使用し、streamの要素を1つずつ表示
+        System.out.println();
         //シンプルに書くとこうなる
-        list.stream().forEach(System.out::println);
-
+        System.out.println("よりシンプルにStreamAPIで記述");
+        list.forEach(System.out::print);
+        System.out.println();
         //余談、プリミティブ型もStream化できる
         int[] array = new int[]{1, 2, 3, 4, 5};
         IntStream intStream = Arrays.stream(array);
 
-
         /** ここまでだとあんまりStreamAPIのうまみを感じない。*/
+
+
+        //ソートしてみる
+        System.out.println("Listをソートしてみる");
+        list.stream().sorted(Comparator.reverseOrder()).forEach(System.out::println);
+        Collections.sort(list);
+        System.out.println();
 
 
         /**
@@ -68,7 +79,7 @@ public class StreamAPIpractice {
         for (String str : list3) {
             if (forList.contains(str)) {
                 continue;
-            } else if(str.contains("o") || str.contains("O")){ //追加部分に条件を追記
+            } else if (str.contains("o") || str.contains("O")) { //追加部分に条件を追記
                 forList.add(str);
             }
         }
@@ -86,7 +97,7 @@ public class StreamAPIpractice {
                 .collect(Collectors.toList());//終端操作、リストに変換する
 
         System.out.println("StreamAPIで記述した場合のOまたがoを含むフルーツの名前");
-        System.out.println(streamList );
+        System.out.println(streamList);
 
         /**
          * これくらいの単純な処理だと、まだforでも良い気がするが1月後にコードを見返した時、どちらの方がわかりやすいだろうか。
