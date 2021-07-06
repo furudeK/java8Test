@@ -6,15 +6,15 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 
-public class RamdaPractice {
+class LambdaPractice {
     public interface Hello {
         void getHello(String str);
     }
 
-
     public interface HelloAndReply {
         void getHello(String name, String reply);
     }
+
 
     static void print(Integer i) {
         System.out.println(i);
@@ -26,7 +26,7 @@ public class RamdaPractice {
         //メソッド参照(System.out::println）
         /** 今回はよりわかりやすくするために、printメソッドを用意*/
         //クラス名::メソッド名でメソッド参照が可能
-        list.stream().forEach(RamdaPractice::print);
+        list.stream().forEach(LambdaPractice::print);
 
         // ラムダ式で記入するとこうなる 引数->処理（メソッド名）
         list.stream().forEach(i -> print(i)); //引数iをprintメソッドに渡して表示をする
